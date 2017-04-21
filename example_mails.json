@@ -1,0 +1,30 @@
+{
+  "my_info": {
+    "mail": "MY_MAIL",
+    "pass": "MY_PASSWORD"
+  },
+  "subject": {
+    "english": "SUBJECT_ENGLISH",
+    "spanish": "SUBJECT_SPANISH"
+  },
+  "greeting": {
+    "english": "GREETING_ENGLISH ",
+    "spanish": "GREETING_SPANISH"
+  },
+  "body": {
+    "english": "BODY_ENGLISH",
+    "spanish": "BODY_SPANISH"
+  },
+  "people": {
+    "person001": {
+      "name": "PERSON001_NAME",
+      "mail": "PERSON001_MAIL",
+      "language": "PERSON001_LANGUAGE"
+    },
+    "person002": {
+      "name": "PERSON002_NAME",
+      "mail": "PERSON002_MAIL",
+      "language": "PERSON002_LANGUAGE"
+    }
+  }
+}
