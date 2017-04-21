@@ -39,10 +39,9 @@ from selenium.webdriver.common.keys import Keys
 
 # global variables for waiting time
 waitTime = 1
-waitTimeLong = 6
+waitTimeLong = 10
 
 # main function declaration
-
 
 def main():
 
