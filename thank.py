@@ -33,22 +33,22 @@ import string
 import json
 
 # import selenium module for web automation
-# include webdriver for using chrome and Keys for using keyboard commands
+# include webdriver for using chrome and eys for using keyboard commands
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 # global variables for waiting time
 waitTime = 1
-waitTimeLong = 10
+waitTimeLong = 8
 
 # main function declaration
 
 def main():
 
-    print "read json file"
+    print "read json file for mails"
 
     # read json file
-    json_data = open("./mails.json").read()
+    json_data = open("./test_mails.json").read()
 
     # load json file to data
     data = json.loads(json_data)
@@ -77,7 +77,7 @@ def main():
     driver = webdriver.Chrome()
 
     # set the window size of the driver
-    driver.set_window_size(1200, 800)
+    driver.set_window_size(900, 600)
 
     print "go to gmail"
 
@@ -88,7 +88,7 @@ def main():
     driver.get(url)
 
     # wait
-    time.sleep(waitTimeLong)
+    time.sleep(waitTime)
 
     print "find input box for mail"
 
@@ -127,7 +127,7 @@ def main():
     inputPass.send_keys(Keys.ENTER)
 
     # wait
-    time.sleep(waitTime)
+    time.sleep(waitTimeLong)
 
     print "parse people from file mails.json"
 
@@ -143,6 +143,9 @@ def main():
         name = data["people"][person]["name"]
         mail = data["people"][person]["mail"]
         language = data["people"][person]["language"]
+
+        #make name capital letters
+        name = name.upper()
 
         print "retrieve compose button"
 
