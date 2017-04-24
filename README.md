@@ -6,8 +6,7 @@ this piece is part of my nyu itp thesis.
 
 it automates sending thank you emails to people i want to thank for their support through my life.
 
-![demo](https://github.com/montoyamoraga/its_ok_to_thank/raw/master/assets/its_ok_to_thank_shorter.gif "demo it's ok to thank")
-
+![demo](https://github.com/montoyamoraga/its_ok_to_thank/raw/master/assets/its_ok_to_thank_loop.gif "demo it's ok to thank")
 
 ## technology
 
