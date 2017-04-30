@@ -39,25 +39,23 @@ from selenium.webdriver.common.keys import Keys
 
 # global variables for waiting time
 waitTime = 1
-waitTimeLong = 8
+waitTimeLong = 20
 
 # main function declaration
 
 def main():
 
+    json_file = "./" + sys.argv[1]
+
     print "read json file for mails"
 
     # read json file
-    json_data = open("./test_mails.json").read()
+    json_data = open(json_file).read()
 
     # load json file to data
     data = json.loads(json_data)
 
     print "parse info from file mails.json"
-
-    # parse my_mail info
-    myMail = data["my_info"]["mail"]
-    myPass = data["my_info"]["pass"]
 
     # parse email subject
     subjectEnglish = data["subject"]["english"]
@@ -90,42 +88,6 @@ def main():
     # wait
     time.sleep(waitTime)
 
-    print "find input box for mail"
-
-    # retrieve input for mail
-    inputMail = driver.find_element_by_id("Email")
-
-    print "write mail"
-
-    # write email on input
-    inputMail.send_keys(myMail)
-
-    print "hit enter"
-
-    # hit enter
-    inputMail.send_keys(Keys.ENTER)
-
-    # wait
-    time.sleep(waitTime)
-
-    print "find input box for password"
-
-    # retrieve input for mail
-    inputPass = driver.find_element_by_id("Passwd")
-
-    # wait
-    time.sleep(waitTime)
-
-    print "write password"
-
-    # write password on input
-    inputPass.send_keys(myPass)
-
-    print "hit enter"
-
-    # hit enter
-    inputPass.send_keys(Keys.ENTER)
-
     # wait
     time.sleep(waitTimeLong)
 
@@ -138,103 +100,110 @@ def main():
 
     # go through every person in people
     for person in people:
-        print "parse name, mail and language"
-        # parse name, mail, language
-        name = data["people"][person]["name"]
-        mail = data["people"][person]["mail"]
-        language = data["people"][person]["language"]
 
-        #make name capital letters
-        name = name.upper()
+        try:
+            print "parse name, mail and language"
+            # parse name, mail, language
+            name = data["people"][person]["name"]
+            mail = data["people"][person]["mail"]
+            language = data["people"][person]["language"]
 
-        print "retrieve compose button"
+            #make name capital letters
+            name = name.upper()
 
-        # retrieve compose button
-        compose = driver.find_element_by_xpath("//div[@class='z0']/div")
+            print "retrieve compose button"
 
-        # wait
-        time.sleep(waitTime)
+            # retrieve compose button
+            compose = driver.find_element_by_xpath("//div[@class='z0']/div")
 
-        print "click on compose button"
+            # wait
+            time.sleep(waitTime)
 
-        # click on compose
-        compose.click()
+            print "click on compose button"
 
-        # wait
-        time.sleep(waitTime)
+            # click on compose
+            compose.click()
 
-        print "retrieve to element"
+            # wait
+            time.sleep(waitTime)
 
-        # retrieve to input
-        inputTo = driver.find_element_by_name("to")
+            print "retrieve to element"
 
-        print "write mail on to element"
+            # retrieve to input
+            inputTo = driver.find_element_by_name("to")
 
-        # write name on to input
-        inputTo.send_keys(mail)
+            print "write mail on to element"
 
-        # wait
-        time.sleep(waitTime)
+            # write name on to input
+            inputTo.send_keys(mail)
 
-        print "hit enter"
+            # wait
+            time.sleep(waitTime)
 
-        # hit enter
-        inputTo.send_keys(Keys.ENTER)
+            print "hit enter"
 
-        print "retrieve subject element"
+            # hit enter
+            inputTo.send_keys(Keys.ENTER)
 
-        # retrieve subject input
-        inputSubject = driver.find_element_by_name("subjectbox")
+            print "retrieve subject element"
 
-        print "write subject on subject element"
+            # retrieve subject input
+            inputSubject = driver.find_element_by_name("subjectbox")
 
-        # write subject on subject input
-        if language == "english":
-            inputSubject.send_keys(subjectEnglish)
-        elif (language == "spanish"):
-            inputSubject.send_keys(subjectSpanish)
+            print "write subject on subject element"
 
-        print "hit enter"
+            # write subject on subject input
+            if language == "english":
+                inputSubject.send_keys(subjectEnglish)
+            elif (language == "spanish"):
+                inputSubject.send_keys(subjectSpanish)
 
-        # hit enter
-        inputSubject.send_keys(Keys.ENTER)
+            print "hit enter"
 
-        print "retrieve body element"
+            # hit enter
+            inputSubject.send_keys(Keys.ENTER)
 
-        # retrieve body input
-        inputBody = driver.find_element_by_css_selector(
-            "div[aria-label='Message Body']")
+            print "retrieve body element"
 
-        # wait
-        time.sleep(waitTime)
+            # retrieve body input
+            inputBody = driver.find_element_by_css_selector(
+                "div[aria-label='Message Body']")
 
-        print "write body on body element"
+            # wait
+            time.sleep(waitTime)
 
-        # write body on body input
-        if (language == "english"):
-            inputBody.send_keys(greetingEnglish)
-            inputBody.send_keys(name)
-            inputBody.send_keys(",")
-            inputBody.send_keys(Keys.ENTER)
-            inputBody.send_keys(bodyEnglish)
-        elif (language == "spanish"):
-            inputBody.send_keys(greetingSpanish)
-            inputBody.send_keys(name)
-            inputBody.send_keys(",")
-            inputBody.send_keys(Keys.ENTER)
-            inputBody.send_keys(bodySpanish)
+            print "write body on body element"
 
-        # wait
-        time.sleep(waitTime)
+            # write body on body input
+            if (language == "english"):
+                inputBody.send_keys(greetingEnglish)
+                inputBody.send_keys(name)
+                inputBody.send_keys(",")
+                inputBody.send_keys(Keys.ENTER)
+                inputBody.send_keys(bodyEnglish)
+            elif (language == "spanish"):
+                inputBody.send_keys(greetingSpanish)
+                inputBody.send_keys(name)
+                inputBody.send_keys(",")
+                inputBody.send_keys(Keys.ENTER)
+                inputBody.send_keys(bodySpanish)
 
-        sendButton = driver.find_element_by_xpath("//div[text()='Send']")
-        sendButton.click()
+            # wait
+            time.sleep(waitTime)
 
-        # wait
-        time.sleep(waitTime)
+            sendButton = driver.find_element_by_xpath("//div[text()='Send']")
+            sendButton.click()
 
-        # wait
-        time.sleep(waitTime)
+            # wait
+            time.sleep(waitTime)
+
+            # wait
+            time.sleep(waitTime)
+        except Exception as e:
+            print "this mail failed:" + name
+
+
+    print "thanks! ok bye"
 
     # to close the browser window
     driver.quit()
