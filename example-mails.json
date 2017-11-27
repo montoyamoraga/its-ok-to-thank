@@ -1,8 +1,4 @@
 {
-  "my_info": {
-    "mail": "MY_MAIL",
-    "pass": "MY_PASSWORD"
-  },
   "subject": {
     "english": "SUBJECT_ENGLISH",
     "spanish": "SUBJECT_SPANISH"

@@ -1,13 +1,10 @@
-# its ok to thank
+# its-ok-to-thank
 # by aaron montoya-moraga
 # project part of my nyu itp thesis
 # python script to automate sending thank you emails
-# april 2017
-# v0.0.1
-
-# dependencies
-# install chromedriver on the machine
-# it can be installed with homebrew on mac os x
+# original version april 2017
+# revised november 2017
+# v1.0.0
 
 # instructions
 
